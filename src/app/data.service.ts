@@ -10,10 +10,23 @@ export class DataService<Type> {
     private resolveSuffix: string = '?resolve=true';
     private actionUrl: string;
     private headers: Headers;
+    private cookies: string = 'Cookie';
+    private connect_sid: string = 'connect.sid';
+    private access_token: string = 'access_token';
+    private userId: string = 'userId';
+
+    public createKey(key: string){
+        if(localStorage.getItem(key) == null){  console.log('errrrrrrror'); return; }
+        return key + '=' + localStorage.getItem(key) + ';';
+    }
 
     constructor(private http: Http, private _configuration: Configuration) {
         this.actionUrl = _configuration.ServerWithApiUrl;
         this.headers = new Headers();
+
+        var cookiesValue = this.createKey(this.connect_sid) + this.createKey(this.access_token) + this.createKey(this.userId);
+        console.log("Cookies " , cookiesValue);
+        this.headers.append(this.cookies , cookiesValue);
         this.headers.append('Content-Type', 'application/json');
         this.headers.append('Accept', 'application/json');
     }

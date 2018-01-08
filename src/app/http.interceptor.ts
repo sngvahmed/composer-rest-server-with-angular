@@ -30,7 +30,7 @@ export class NoopInterceptor implements HttpInterceptor {
         
         this.headers.append('Content-Type', 'application/json');
         this.headers.append('Accept', 'application/json');
-        debugger;
+        console.log(cookiesValue)
         const changedReq = req.clone({
             withCredentials : true,
             headers: req.headers.set('Cookie', cookiesValue)

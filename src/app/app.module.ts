@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { Configuration }     from './configuration';
@@ -20,12 +19,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     SampleAssetComponent
   ],
   imports: [
-    
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    HttpModule,
     AppRoutingModule
   ],
   providers: [

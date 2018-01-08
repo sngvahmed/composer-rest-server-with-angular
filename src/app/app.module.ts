@@ -10,8 +10,8 @@ import { HomeComponent } from './home/home.component';
 // import { TransactionComponent } from './Transaction/Transaction.component'
 import { CookieService } from 'ngx-cookie-service';
 import { SampleAssetComponent } from './SampleAsset/SampleAsset.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NoopInterceptor } from 'app/http.interceptor';
+import { NoopInterceptor } from './http.interceptor';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,9 +20,11 @@ import { NoopInterceptor } from 'app/http.interceptor';
     SampleAssetComponent
   ],
   imports: [
+    
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     HttpModule,
     AppRoutingModule
   ],

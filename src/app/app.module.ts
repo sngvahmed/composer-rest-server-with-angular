@@ -10,15 +10,14 @@ import { HomeComponent } from './home/home.component';
 // import { TransactionComponent } from './Transaction/Transaction.component'
 import { CookieService } from 'ngx-cookie-service';
 import { SampleAssetComponent } from './SampleAsset/SampleAsset.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NoopInterceptor } from 'app/http.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
 		HomeComponent,
-    // TransactionComponent,
-    
     SampleAssetComponent
-		
   ],
   imports: [
     BrowserModule,
@@ -30,7 +29,11 @@ import { SampleAssetComponent } from './SampleAsset/SampleAsset.component';
   providers: [
     Configuration,
     DataService,
-	
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: NoopInterceptor,
+      multi: true,
+    },
     CookieService
   ],
   bootstrap: [AppComponent]
